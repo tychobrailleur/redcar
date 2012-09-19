@@ -1,4 +1,4 @@
-
+# encoding: utf-8
 module Redcar
   GROOVY_YAML=<<-YAML
   - regex:    "class\\s+(\\w+)"

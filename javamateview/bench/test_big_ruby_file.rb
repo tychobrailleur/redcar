@@ -69,8 +69,8 @@ module Redcar
         EditView::ModifiedTabsChecker.new(
           win.notebooks.map(&:tabs).flatten.select {|t| t.is_a?(EditTab)}, 
           "Save all before closing the window?",
-          :none     => lambda { win.close },
-          :continue => lambda { win.close },
+          :none     => Proc.new { win.close },
+          :continue => Proc.new { win.close },
           :cancel   => nil
         ).check
       end

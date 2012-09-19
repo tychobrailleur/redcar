@@ -83,7 +83,7 @@ module Redcar
       Menu::Builder.build do
         sub_menu "Plugins" do
           sub_menu "Macros" do
-            item lambda {
+            item Proc.new {
                 if Macros.recording[EditView.focussed_edit_view]
                   "Stop Recording"
                 else
