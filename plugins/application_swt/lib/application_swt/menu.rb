@@ -85,7 +85,7 @@ module Redcar
             menu_header.text = entry.text
             new_menu = Swt::Widgets::Menu.new(menu)
             menu_header.menu = new_menu
-            menu_header.add_arm_listener do
+            menu_header.add_arm_listener do |e|
               new_menu.get_items.each {|i| i.dispose }
               add_entries_to_menu(new_menu, nil, entry)
             end
@@ -98,7 +98,7 @@ module Redcar
             new_menu_listener = MenuListener.new
             add_entries_to_menu(new_menu, new_menu_listener, entry)
             new_menu.add_menu_listener(new_menu_listener)
-            menu_header.add_arm_listener do
+            menu_header.add_arm_listener do |e|
               entry.entries.zip(new_menu.get_items) do |sub_entry, swt_item|
                 if sub_entry.lazy_text?
                   swt_item.text = sub_entry.text

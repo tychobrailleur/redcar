@@ -86,7 +86,7 @@ module Redcar
             toolbar_header.text = entry.text
             new_toolbar = Swt::Widgets::ToolBar.new(toolbar)
             toolbar_header.toolbar = new_toolbar
-            toolbar_header.add_arm_listener do
+            toolbar_header.add_arm_listener do |e|
               new_toolbar.get_items.each {|i| i.dispose }
               add_entries_to_toolbar(new_toolbar, entry)
             end
