@@ -1,61 +1,61 @@
 # encoding: utf-8
 module Redcar
   GROOVY_YAML=<<-YAML
-  - regex:    "class\\s+(\\w+)"
+  - regex:    "class\\\\s+(\\\\w+)"
     capture:  1
     type:     id
     kind:     class
-  - regex:    "interface\\s+(\\w+)"
+  - regex:    "interface\\\\s+(\\\\w+)"
     capture:  1
     type:     id
     kind:     interface
-  - regex:    "^\\s*((public|private|protected)?\\s+|)(static\\s+)?(([\\.\\w]+|)[A-Z]\\w*(<\\w+>)?|void|int|boolean|byte|short|long|char|float|def)\\s+(\\w*)\\s*\\((.*)\\)\\s*\\{"
+  - regex:    "^\\\\s*((public|private|protected)?\\\\s+|)(static\\\\s+)?(([\\\\.\\\\w]+|)[A-Z]\\\\w*(<\\\\w+>)?|void|int|boolean|byte|short|long|char|float|def)\\\\s+(\\\\w*)\\\\s*\\\\((.*)\\\\)\\\\s*\\\\{"
     capture:  7
     type:     id
     kind:     method
-  - regex:    "(def|static)\\s+(\\w+)\\s*=\\s*\\{"
+  - regex:    "(def|static)\\\\s+(\\\\w+)\\\\s*=\\\\s*\\\\{"
     capture:  2
     type:     id
     kind:     closure
-  - regex:    "enum\\s+(\\w+)"
+  - regex:    "enum\\\\s+(\\\\w+)"
     capture:  1
     type:     id
     kind:     attribute
-  - regex:    "^\\s*(public|private|protected)\\s+(static\\s+|)([A-Z]\\w+|int|boolean|byte|short|long|char|float|def)\s+(\\w+)\\s*(=|\\n)"
+  - regex:    "^\\\\s*(public|private|protected)\\\\s+(static\\\\s+|)([A-Z]\\\\w+|int|boolean|byte|short|long|char|float|def)\s+(\\\\w+)\\\\s*(=|\\\\n)"
     capture:  4
     type:     id
     kind:     assignment
   YAML
 
   JAVA_YAML=<<-YAML
-  - regex:    "class\\s+(\\w+)"
+  - regex:    "class\\\\s+(\\\\w+)"
     capture:  1
     type:     id
     kind:     class
-  - regex:    "interface\\s+(\\w+)"
+  - regex:    "interface\\\\s+(\\\\w+)"
     capture:  1
     type:     id
     kind:     interface
-  - regex:    "^\\s*((public|private|protected|)\\s+|)(static\\s+|)(([\\.\\w]+|)[A-Z]\\w*(<\\w+>|)|void|int|boolean|byte|short|long|char|float)\\s+(\\w+\\s*\\((.*)\\))?"
+  - regex:    "^\\\\s*((public|private|protected|)\\\\s+|)(static\\\\s+|)(([\\\\.\\\\w]+|)[A-Z]\\\\w*(<\\\\w+>|)|void|int|boolean|byte|short|long|char|float)\\\\s+(\\\\w+\\\\s*\\\\((.*)\\\\))?"
     capture:  7
     type:     id
     kind:     method
-  - regex:    "enum\\s+(\\w*)"
+  - regex:    "enum\\\\s+(\\\\w*)"
     capture:  1
     type:     id
     kind:     attribute
-  - regex:    "^\\s*(public|private|protected)\\s+(static\\s+|)([A-Z]\\w+|int|boolean|byte|short|long|char|float|def)\s+(\\w+)\\s*(=|;)"
+  - regex:    "^\\\\s*(public|private|protected)\\\\s+(static\\\\s+|)([A-Z]\\\\w+|int|boolean|byte|short|long|char|float|def)\s+(\\\\w+)\\\\s*(=|;)"
     capture:  4
     type:     id
     kind:     assignment
   YAML
 
   RUBY_YAML=<<-YAML
-  - regex:    "^[^#]*(class|module)\\s+(?:\\w*::)*(\\w+)(?:$|\\s|<)"
+  - regex:    "^[^#]*(class|module)\\\\s+(?:\\\\w*::)*(\\\\w+)(?:$|\\\\s|<)"
     capture:  2
     type:     id
     kind:     class
-  - regex:    "^[^#]*def (self\\.)?(\\w+[?!=]?)(\\(.*\\))?(\\s|\\;|\\z|\\b)"
+  - regex:    "^[^#]*def (self\\\\.)?(\\\\w+[?!=]?)(\\\\(.*\\\\))?(\\\\s|\\\\;|\\\\z|\\\\b)"
     capture:  2
     type:     id
     kind:     method
@@ -63,67 +63,67 @@ module Redcar
     capture:  2
     type:     id-list
     kind:     attribute
-  - regex:    "^[^#]*alias\\s+:(\\w+)"
+  - regex:    "^[^#]*alias\\\\s+:(\\\\w+)"
     capture:  1
     type:     id
     kind:     alias
-  - regex:    "^[^#]*alias_method\\s+:(\\w+[?!]?)"
+  - regex:    "^[^#]*alias_method\\\\s+:(\\\\w+[?!]?)"
     capture:  1
     type:     id
     kind:     alias
-  - regex:    "^\\s*([A-Z]\\w*)\\s*="
+  - regex:    "^\\\\s*([A-Z]\\\\w*)\\\\s*="
     capture:  1
     type:     id
     kind:     assignment
   YAML
 
   PHP_YAML=<<-YAML
-  - regex:    "class\\s+(\\w+)"
+  - regex:    "class\\\\s+(\\\\w+)"
     capture:  1
     type:     id
     kind:     class
-  - regex:    "interface\\s+(\\w+)"
+  - regex:    "interface\\\\s+(\\\\w+)"
     capture:  1
     type:     id
     kind:     interface
-  - regex:    "function\\s+(\\w+)\s*\\("
+  - regex:    "function\\\\s+(\\\\w+)\s*\\\\("
     capture:  1
     type:     id
     kind:     method
   YAML
 
   JS_YAML=<<-YAML
-  - regex:    "function\\s+([A-Z]\\w*)\\(.*\\)"
+  - regex:    "function\\\\s+([A-Z]\\\\w*)\\\\(.*\\\\)"
     capture:  1
     type:     id
     kind:     class
-  - regex:    "function\\s+([a-z]\\w*)\\s*\\(.*\\)"
+  - regex:    "function\\\\s+([a-z]\\\\w*)\\\\s*\\\\(.*\\\\)"
     capture:  1
     type:     id
     kind:     method
   YAML
 
   CUKE_YAML=<<-YAML
-  - regex:    "Feature:\\s*(.*)"
+  - regex:    "Feature:\\\\s*(.*)"
     capture:  1
     type:     id
     kind:     class
-  - regex:    "Scenario:\\s*(.*)"
+  - regex:    "Scenario:\\\\s*(.*)"
     capture:  1
     type:     id
     kind:     method
-  - regex:    "(When|Then|And)\\s*\\/\\^?(.*?)\\$?\\/\\s*do"
+  - regex:    "(When|Then|And)\\\\s*\\\\/\\\\^?(.*?)\\\\$?\\\\/\\\\s*do"
     capture:  2
     type:     id
     kind:     closure
   YAML
 
   SPEC_YAML=<<-YAML
-  - regex:    "describe\\s*\\"(.*?)\\"\\s*do"
+  - regex:    "describe\\\\s*\\"(.*?)\\"\\\\s*do"
     capture:  1
     type:     id
     kind:     method
-  - regex:    "it\\s*\\"(.*?)\\"\\s*do"
+  - regex:    "it\\\\s*\\\\"(.*?)\\\\"\\\\s*do"
     capture:  1
     type:     id
     kind:     closure
@@ -132,8 +132,8 @@ module Redcar
   class Declarations
     class Parser
       DEFINITIONS = {
-        /_steps\.rb$/ => YAML.load(CUKE_YAML) + YAML.load(RUBY_YAML),
-        /_spec\.rb$/ => YAML.load(RUBY_YAML) + YAML.load(SPEC_YAML),
+         /_steps\.rb$/ => YAML.load(CUKE_YAML) + YAML.load(RUBY_YAML),
+       # /_spec\.rb$/ => YAML.load(RUBY_YAML) + YAML.load(SPEC_YAML),
         /\.rb$/       => YAML.load(RUBY_YAML),
         /\.java$/     => YAML.load(JAVA_YAML),
         /\.groovy$/   => YAML.load(GROOVY_YAML),
