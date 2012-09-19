@@ -309,7 +309,7 @@ module Redcar
         begin
           @model.tree_controller.handle_error(@model, e)
         rescue => e
-          puts "error in error hander: #{e.class} #{e.message}"
+          puts "error in error handler: #{e.class} #{e.message}"
           puts e.backtrace
         end
       else
